@@ -453,6 +453,11 @@ func (p *Pinger) processPacket(recv *packet) error {
 }
 
 func (p *Pinger) sendICMP(conn *icmp.PacketConn) error {
+	//如果设置过最大发包量，那么发到p.Count后停止发包
+	if p.Count > 0 && p.PacketsSent >= p.Count {
+		return nil
+	}
+
 	var typ icmp.Type
 	if p.ipv4 {
 		typ = ipv4.ICMPTypeEcho
