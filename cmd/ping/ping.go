@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/zhujingfa/go-ping"
+	"git.fanghui.tech/golang/go-ping"
 )
 
 var usage = `
